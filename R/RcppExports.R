@@ -26,7 +26,7 @@
 #' vm3_pi <- vm3_de %% (2 * pi)  ## in radian unit
 #' @export
 rvm <- function(n, mu, k) {
-    .Call('CircularDDM_rvm', PACKAGE = 'CircularDDM', n, mu, k)
+    .Call('_CircularDDM_rvm', PACKAGE = 'CircularDDM', n, mu, k)
 }
 
 #' Find First k Positive Zeros for the Bessel Functions
@@ -57,7 +57,7 @@ rvm <- function(n, mu, k) {
 #' output
 #' @export
 besselzero <- function(nu, k, kind) {
-    .Call('CircularDDM_besselzero', PACKAGE = 'CircularDDM', nu, k, kind)
+    .Call('_CircularDDM_besselzero', PACKAGE = 'CircularDDM', nu, k, kind)
 }
 
 #' Log-Likelihood for Continuous Reports
@@ -82,7 +82,7 @@ besselzero <- function(nu, k, kind) {
 #' den  <- logLik_resp(x, pVec=pVec); den
 #' @export
 logLik_resp <- function(x, pVec) {
-    .Call('CircularDDM_logLik_resp', PACKAGE = 'CircularDDM', x, pVec)
+    .Call('_CircularDDM_logLik_resp', PACKAGE = 'CircularDDM', x, pVec)
 }
 
 #' Log-Likelihood for Circular First Passage Time
@@ -112,7 +112,7 @@ logLik_resp <- function(x, pVec) {
 #' den
 #' @export
 logLik_dt <- function(x, pVec, k = 141L) {
-    .Call('CircularDDM_logLik_dt', PACKAGE = 'CircularDDM', x, pVec, k)
+    .Call('_CircularDDM_logLik_dt', PACKAGE = 'CircularDDM', x, pVec, k)
 }
 
 #' The Circular Drift-diffusion Distribution
@@ -151,12 +151,12 @@ logLik_dt <- function(x, pVec, k = 141L) {
 #' hist(den[,3], breaks = "fd", xlab="Response Angle", main="Density")
 #' @export
 dcddm <- function(x, pVec, k = 141L) {
-    .Call('CircularDDM_dcddm', PACKAGE = 'CircularDDM', x, pVec, k)
+    .Call('_CircularDDM_dcddm', PACKAGE = 'CircularDDM', x, pVec, k)
 }
 
 #' @rdname dcddm
 #' @export
 rcddm <- function(n, pVec, p = 0.15) {
-    .Call('CircularDDM_rcddm', PACKAGE = 'CircularDDM', n, pVec, p)
+    .Call('_CircularDDM_rcddm', PACKAGE = 'CircularDDM', n, pVec, p)
 }
 

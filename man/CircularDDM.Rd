@@ -14,7 +14,7 @@ Continuous Report, Psychological Review, 123(4), 425--451.
 }
 \author{
 Yi-Shin Lin <yishin.lin@utas.edu.au> \cr
-Peter Kvam <william.holmes@vanderbilt.edu> \cr
-Andrew Heathcote <andrew.heathcote@utas.edu.au>
+Andrew Heathcote <andrew.heathcote@utas.edu.au> \cr
+Peter Kvam <kvam.peter@gmail.com> \cr
 }
 \keyword{CircularDDM}

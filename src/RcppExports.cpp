@@ -8,7 +8,7 @@ using namespace Rcpp;
 
 // rvm
 arma::vec rvm(int n, double mu, double k);
-RcppExport SEXP CircularDDM_rvm(SEXP nSEXP, SEXP muSEXP, SEXP kSEXP) {
+RcppExport SEXP _CircularDDM_rvm(SEXP nSEXP, SEXP muSEXP, SEXP kSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -21,7 +21,7 @@ END_RCPP
 }
 // besselzero
 arma::vec besselzero(double nu, int k, int kind);
-RcppExport SEXP CircularDDM_besselzero(SEXP nuSEXP, SEXP kSEXP, SEXP kindSEXP) {
+RcppExport SEXP _CircularDDM_besselzero(SEXP nuSEXP, SEXP kSEXP, SEXP kindSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -34,7 +34,7 @@ END_RCPP
 }
 // logLik_resp
 arma::vec logLik_resp(arma::mat x, arma::vec pVec);
-RcppExport SEXP CircularDDM_logLik_resp(SEXP xSEXP, SEXP pVecSEXP) {
+RcppExport SEXP _CircularDDM_logLik_resp(SEXP xSEXP, SEXP pVecSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -46,7 +46,7 @@ END_RCPP
 }
 // logLik_dt
 arma::vec logLik_dt(arma::mat x, arma::vec pVec, int k);
-RcppExport SEXP CircularDDM_logLik_dt(SEXP xSEXP, SEXP pVecSEXP, SEXP kSEXP) {
+RcppExport SEXP _CircularDDM_logLik_dt(SEXP xSEXP, SEXP pVecSEXP, SEXP kSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -59,7 +59,7 @@ END_RCPP
 }
 // dcddm
 arma::vec dcddm(arma::mat x, arma::vec pVec, int k);
-RcppExport SEXP CircularDDM_dcddm(SEXP xSEXP, SEXP pVecSEXP, SEXP kSEXP) {
+RcppExport SEXP _CircularDDM_dcddm(SEXP xSEXP, SEXP pVecSEXP, SEXP kSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -72,7 +72,7 @@ END_RCPP
 }
 // rcddm
 arma::mat rcddm(int n, arma::vec pVec, double p);
-RcppExport SEXP CircularDDM_rcddm(SEXP nSEXP, SEXP pVecSEXP, SEXP pSEXP) {
+RcppExport SEXP _CircularDDM_rcddm(SEXP nSEXP, SEXP pVecSEXP, SEXP pSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -82,4 +82,19 @@ BEGIN_RCPP
     rcpp_result_gen = Rcpp::wrap(rcddm(n, pVec, p));
     return rcpp_result_gen;
 END_RCPP
+}
+
+static const R_CallMethodDef CallEntries[] = {
+    {"_CircularDDM_rvm", (DL_FUNC) &_CircularDDM_rvm, 3},
+    {"_CircularDDM_besselzero", (DL_FUNC) &_CircularDDM_besselzero, 3},
+    {"_CircularDDM_logLik_resp", (DL_FUNC) &_CircularDDM_logLik_resp, 2},
+    {"_CircularDDM_logLik_dt", (DL_FUNC) &_CircularDDM_logLik_dt, 3},
+    {"_CircularDDM_dcddm", (DL_FUNC) &_CircularDDM_dcddm, 3},
+    {"_CircularDDM_rcddm", (DL_FUNC) &_CircularDDM_rcddm, 3},
+    {NULL, NULL, 0}
+};
+
+RcppExport void R_init_CircularDDM(DllInfo *dll) {
+    R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
+    R_useDynamicSymbols(dll, FALSE);
 }
